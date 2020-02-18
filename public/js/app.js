@@ -1,0 +1,1 @@
+console.log('Clinet side javascript file is loaded!')
