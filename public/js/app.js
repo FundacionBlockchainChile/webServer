@@ -3,8 +3,14 @@ console.log("Clinet side javascript file is loaded!");
 const messageOne = document.querySelector("#messageOne");
 const messageTwo = document.querySelector("#messageTwo");
 
+// weather Inputs
 const weatherForm = document.querySelector("form");
 const search = document.querySelector("input");
+
+
+
+
+
 
 // Forecast Function
 const forecast = address =>
@@ -23,6 +29,8 @@ const forecast = address =>
     });
   });
 
+
+// Listeners
 weatherForm.addEventListener("submit", e => {
   const location = search.value;
   //   console.log(location);
@@ -33,3 +41,4 @@ weatherForm.addEventListener("submit", e => {
 
   e.preventDefault();
 });
+

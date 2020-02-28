@@ -3,6 +3,7 @@ const express =  require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const splashImage = require('./utils/splashImage')
 
 // console.log(__dirname)
 // console.log(path.join(__dirname, '../public'))
@@ -49,6 +50,31 @@ app.get('/help', (req, res) => {
         name: 'NODO'
     })
 })
+
+// RUta para la pagina image
+app.get('/image', (req, res) => {
+    res.render('splashImage', {
+        title: 'Photo Fetching App',
+        name: 'NODO'
+    })
+})
+
+
+// Ruta API splashimage
+app.get('/splash', (req, res) => {
+    if(!req.query.subject) {
+        return res.send({
+            error: 'You must provide a subject to search an image....?subject=yourSearch...'
+        })
+    }
+    splashImage(req.query.subject, (error, body = {}) => {
+        if (error) {
+            return res.send({ error})
+        }
+        res.send(body)
+    })
+})
+
 
 app.get('/weather', (req, res) => {
     if (!req.query.address) {

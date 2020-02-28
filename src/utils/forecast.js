@@ -1,5 +1,51 @@
 const request = require('request')
 
+const forecast = (latitude, longitude, callback) => {
+    const url = 'https://api.darksky.net/forecast/93e4fc3280ccc797905950f04e583732/' + latitude + ',' + longitude + '?lang=es&units=si';
+
+    request({ url, json: true }, (error, { body }) => {
+        if (error) {
+            callback('Unable to connect to DarkSky weather service! Please check your connection...', undefined)
+        } else if (body.error) {
+            callback(body.error, undefined)
+        } else {
+            let summary = {
+                summary: body.daily.data[0].summary,
+                temperature: body.currently.temperature,
+                icon: body.daily.data[0].icon,
+                moonPhase:  body.daily.data[0].moonPhase,
+                windSpeed: body.daily.data[0].windSpeed
+            }
+            callback(undefined, summary)
+        }
+    })
+}
+
+module.exports = forecast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // DarkSky API
 // https://darksky.net/dev/docs#forecast-request  DOCUMENTATION
 // https://api.darksky.net/forecast/93e4fc3280ccc797905950f04e583732/37.8267,-122.4233  REquest Type 
@@ -26,26 +72,3 @@ const request = require('request')
 //         console.log(summary)
 //     }
 // })
-
-const forecast = (latitude, longitude, callback) => {
-    const url = 'https://api.darksky.net/forecast/93e4fc3280ccc797905950f04e583732/' + latitude + ',' + longitude + '?lang=es&units=si';
-
-    request({ url, json: true }, (error, { body }) => {
-        if (error) {
-            callback('Unable to connet to DarkSky weather service! Please check your connection...', undefined)
-        } else if (body.error) {
-            callback(body.error, undefined)
-        } else {
-            let summary = {
-                summary: body.daily.data[0].summary,
-                temperature: body.currently.temperature,
-                icon: body.daily.data[0].icon,
-                moonPhase:  body.daily.data[0].moonPhase,
-                windSpeed: body.daily.data[0].windSpeed,
-            }
-            callback(undefined, summary)
-        }
-    })
-}
-
-module.exports = forecast

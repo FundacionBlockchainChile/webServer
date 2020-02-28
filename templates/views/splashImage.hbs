@@ -10,19 +10,22 @@
 <body>
     <div class="main-content">
         {{>header}}
-        <p>Use this site o get your Weather!</p>
-        <form id="weatherForm">
-            <input type="text" placeholder="Location" id="weatherInput">
+        <p>Use this page is to search Images!</p>
+        <form id="imageForm">
+            <input type="text" placeholder="Search Image" id="inputImage">
             <button>Search</button>
         </form>
 
         <p id="messageOne"></p>
         <p id="messageTwo"></p>
-        {{!-- <img class="portrait" src="/img/fotoperfil02.jpg" alt="">     --}}
+
+        <img class="splashImage" id="imageOne"></img>
+        <img class="splashImage" id="imageTwo"></img>
+        
     </div>
     
     {{>footer}}
 
-    <script src="/js/app.js"></script>
+    <script src="/js/splashImage.js"></script>
 </body>
 </html>
