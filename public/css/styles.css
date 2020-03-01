@@ -1,14 +1,14 @@
 html {
-    background-image: url("https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+    /* background-image: url("https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"); */
     background-size: cover ;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: wheat;
+    background-color: rgb(0, 0, 0);
 }
 body {
     color: #333333;
     text-align: center;
-    background-color: rgba(255, 255, 255,.5);
+    background-color: rgb(255, 226, 164);
     font-family: arial;
     max-width: 650px;
     margin: 0 auto;

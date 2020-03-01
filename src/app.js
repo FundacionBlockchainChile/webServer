@@ -88,7 +88,7 @@ app.get('/weather', (req, res) => {
           return res.send({ error })
         }
         
-        forecast(latitude, longitude, (error, {summary, temperature, icon, moonPhase, windSpeed }) => {
+        forecast(latitude, longitude, (error, {summary, temperature, icon, moonPhase, windSpeed, temperatureMin, temperatureMax }) => {
           if (error) {
             return res.send({ error })
           }
@@ -99,7 +99,9 @@ app.get('/weather', (req, res) => {
                 temperature : temperature,
                 icon : icon,
                 moonPhase : moonPhase,
-                windSpeed : windSpeed
+                windSpeed : windSpeed,
+                temperatureMin: temperatureMin,
+                temperatureMax: temperatureMax
             })
         })
       })

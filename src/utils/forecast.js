@@ -3,6 +3,8 @@ const request = require('request')
 const forecast = (latitude, longitude, callback) => {
     const url = 'https://api.darksky.net/forecast/93e4fc3280ccc797905950f04e583732/' + latitude + ',' + longitude + '?lang=es&units=si';
 
+    // const url = 'https://api.darksky.net/forecast/93e4fc3280ccc797905950f04e583732/70,-40?lang=es&units=si';
+
     request({ url, json: true }, (error, { body }) => {
         if (error) {
             callback('Unable to connect to DarkSky weather service! Please check your connection...', undefined)
@@ -14,7 +16,9 @@ const forecast = (latitude, longitude, callback) => {
                 temperature: body.currently.temperature,
                 icon: body.daily.data[0].icon,
                 moonPhase:  body.daily.data[0].moonPhase,
-                windSpeed: body.daily.data[0].windSpeed
+                windSpeed: body.daily.data[0].windSpeed,
+                temperatureMin: body.daily.data[0].temperatureMin,
+                temperatureMax: body.daily.data[0].temperatureMax,
             }
             callback(undefined, summary)
         }
